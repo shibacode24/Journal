@@ -1,0 +1,5 @@
+1 . in the submit paper all field is mendetory?
+2.  in the special isssue section from the admin can unique no generate or not?
+3. website front page showing category along with the images
+  but only category master is there how to show the images
+4. how to show special issue on the website

@@ -1,0 +1,33 @@
+$data = $request->all();
+    $user = 'shibakhan1970@gmail.com';
+
+    $pdfPath = "http://localhost/journal/public/images/blank.pdf";
+
+    Mail::send('welcome_mail', ['data' => $data], function ($message) use ($user, $pdfPath) {
+        $message->to($user)
+            ->subject('Welcome Message');
+        $message->from('temporary9794@gmail.com', 'amm');
+        
+        // Attach the PDF
+        $message->attach($pdfPath, [
+            'as' => 'welcome.pdf', // Optional: Rename the file
+            'mime' => 'application/pdf',
+        ]);
+    });
+
+
+    public function check_login_mail(Request $request)
+{
+  if(Auth::attempt('remember_token',$request->token))
+  {
+    return view('admin_dashboard');
+  }
+  else{
+    return view('login');
+
+  }
+
+}
+
+
+Route::get('check_login_mail/{token}',[LoginController::class,'check_login_mail'])->name('check_login_mail');
